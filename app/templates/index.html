@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Predicting Students Adaptivity Level in Online Education</title>
+        <!-- Favicon-->
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/favicon.ico')}}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Simple line icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">Students Adaptivity</a></li>
+                <li class="sidebar-nav-item"><a href="#about">About</a></li>
+                <li class="sidebar-nav-item"><a href="#exploration">Exploration</a></li>
+                <li class="sidebar-nav-item"><a href="#machinelearning">Machine Learning</a></li>
+                <li class="sidebar-nav-item"><a href="#conclusion">Conclusion</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">Team</a></li>
+            </ul>
+        </nav>
+        <!-- Header-->
+        <header class="masthead d-flex align-items-center">
+            <div class="container px-4 px-lg-5 text-center">
+                <h1 class="mb-1">Predicting Students Adaptivity Level in Online Education</h1>
+                <h3 class="mb-5"><em>Katie Jiang - AI Camp DS Crash Course</em></h3>
+                <a class="btn btn-primary btn-xl" href="#about">Let's Start</a>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <h3 style="text-align: left;"> What does the project do?</h3>
+	                   	 <p class="text-muted" style="text-align: left;">
+	                        In the recent years, the outbreak of Covid-19 changes people’s life. Lots of classes move from in-person to remote. Students' learning environment and equipment for joining online school varies from person to person. The teaching mode not only changes students learning speed, but their attitudes towards school work. Thus, how do those changes affect students' digestive of course work? 
+	                        In this project, we aim to identify the important features that affect the learning quality and make predictions for student's digestive based on those factors.
+	                        <br> <br>
+	                        The dataset we will use contains information about student's learning environment such as gender, age, device type, internet quality and so on. All of the features are categorical. Feature importance will be used to help students do self-evaluation when he/she is taking online courses.</p>                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Exploration-->
+        <section class="content-section bg-primary text-white text-center" id="exploration">
+            <div class="container px-4 px-lg-5">
+                 <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Exploration</h2>
+                </div>
+                <div class="row text-center">
+                    <h3 style="text-align: left;"> Data Sources and Structure</h3>
+                    <p class="lead" style="text-align: left;">
+                        The dataset we used is obtained from Kaggle called "students_adaptability_level_online_education" and can be found
+                        here: <a class="lead" href="https://www.kaggle.com/datasets/mdmahmudulhasansuzan/students-adaptability-level-in-online-education">Student Adaptability Level Data</a>.
+                        The dataset contains 14 columns and 1205 instances, each corresponding
+                        to a studnet. It is not surprise that all of the column variables are categorical, becasue this data is quite like a questionnaire.
+                        <br> <br>
+                        The dataset has one response variable, Adaptivity Level, which contains three levels: high, moderate and low. After plotting the distribution of the response varible, we find it is imbalanced. 
+                        <br> <br>
+                        We can plot the number of each class for our target variables to show that it is a highly imbalanced dataset:
+                    </p>
+<!--                     <iframe width="1000" height="500" src="../static/target_variables.html"></iframe> -->
+                      <iframe width="500" height="500" src="{{url_for('static', filename='target_variable.html')}}"></iframe>
+                    
+                    <h3 style="text-align: left; margin-top: 10px;">Feature exploration: Gender Effects</h3>
+                    <p class="lead" style="text-align: left;">
+                        From the plot of adaptivity level vs. gender, we coud observe that males tend to digest new knowledge faster compared to females and the level of low adaptativity level is almost the same for both genders.
+                        <br>
+                        We plotted the following bar chart to show the distribution of each sex:
+                    </p>
+<!--                     <iframe width="1000" height="750" src="../static/missing percentage.html"></iframe>  -->
+                    <iframe width="600" height="600"  src="{{url_for('static', filename='gender_effect.html')}}"></iframe>
+        
+                    
+                    <h3 style="text-align: left; margin-top: 10px;">Feature exploration: Age Effects</h3>
+                    <p class="lead" style="text-align: left;">
+                        Different age group tends to have various learning abilities, from the age group, we could visualize that the optimal age range of learning for students is from 11-15 and 21-25, among them, 21-15 is the range that more students reach high adaptivity level compared with other age range. 
+
+                    </p>
+<!--                     <iframe width="1000" height="1000" title="Correlation Table of Features" src="../static/correlation.html"></iframe>  -->
+                    <iframe width="500" height="500" src="{{url_for('static', filename='age_effect.html')}}"></iframe>
+
+                    <h3 style="text-align: left; margin-top: 10px;">Feature exploration: Class duration Effects</h3>
+                    <p class="lead" style="text-align: left;">
+                        The reasonable class duration is also an important factor for student to digest course work efficiently. From the plot, we could see that class duration is best to be 1-3 hours for students to capture knowledges. If the class time beyond this limit, student may feel boring and hard to focus.
+                    </p>
+<!--                     <iframe width="1000" height="1000" src="../static/scatter.html"></iframe>  -->
+                    <iframe width="500" height="500" src="{{url_for('static', filename='class_effect.html')}}"></iframe>
+                    <br>
+                    <p class="lead" style="text-align: left;">
+                        Also, we visualized one interesting trend of financial condition. People in middle class has the most number of adapting materials, which in turns, digesting more knowledges comparing to families with high and low financial condition.
+                    </p>
+<!--                     <div class="timeline-image"><img src="../static/images/HPV.png" alt="..." width="750"/></div> -->
+                    <iframe width="500" height="500" src="{{url_for('static', filename='financial_effect.html')}}"></iframe>
+
+                    <h3 style="text-align: left; margin-top: 10px;">Data Preparation</h3>
+                    <p class="lead" style="text-align: left;">
+                        To deal with the imbalanced dataset, we used the following two techniques: <br>
+                        1. Applied <b>stratified splitting</b> when splitting the dataset into train, validation and test sets. <br>
+                        2. Processed the data using <b>Synthetic Minority Oversampling Technique (SMOTE)</b>. <br>
+                        To convert the categorical variables into numeric data, we apply the label encoding techniques to map the categories into 1, 0 coding(<b>LabelEncode </b>). This approach is very simple and it involves converting each value in a column to a number.
+                    </p>
+                  <img src={{url_for('static', filename='images/onehot.png')}} class="page-image"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Machine Learning-->
+        <section class="content-section bg-light" id="machinelearning">
+            <div class="container px-4 px-lg-5 text-center">
+	            	 <div class="content-section-heading">
+	                    <h2 class="mb-5">Models</h2>
+	                 </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+	                    <p class="lead" style="text-align: left;">
+	                    Our main goal is to classify the student digestive level based on the learning environment. Since the tree and boosting methods perform very well in general. We decide to start with the baseline model: Logistic Regression and move from there. 
+	                        <br>
+	                    In total, we will use the Logistic regression, Support Vector classifier, Random Forest and Xgboost as our candidate models. After training process, we will evaluate performance of each models based on confusion matrix and F1 score. Also we are going to identify the important features that contribute a lot in predicting adaptivity level.
+	                    </p>
+                	</div>
+
+                <div class="col-lg-10">
+
+	                <h3 style="text-align: left;">Logistic Regression</h3>
+	                <p style="text-align: left;">
+	                    <li class="lead" style="text-align: left;" > Logistic regression is a common predictive model used in lots of classification problem. Its structure
+	                    makes it easy to deploy and interpret. It has an assumption that all samples are independent, identically distributed and the conditional distribution of the target given a sample is Bernoulli perfectly fits our data. </li>
+
+	                    <li class="lead" style="text-align: left;"> We tune two hyper-parameters in logistic regression - maximum number of iterations and the solver.</li>
+
+	                    <li class="lead" style="text-align: left;"> We used lbfgs solver for learning a classifier. The result of logistic regression model has an average accuracy of 60% for three classes. </li>
+
+	                    <li class="lead" style="text-align: left;"> By considering the feature importance, the model suggests financial condition, self-limitation and institution types were identified as the most important features </li>
+	                </p>
+	                <p class="lead" style="text-align: left;">
+	                    We plot the <b>confusion matrix</b> to visualize how our model is predicting the test data. 
+	                    Also, we make graphs on the <b>feature importance</b> of features to see whether our models make sense intuitively.
+	                </p>              
+	                    <iframe width="1000" height="750" src="{{url_for('static', filename='cm_lr.html')}}"></iframe>
+	                          <img src={{url_for('static', filename='images/lr_imps.png')}} class="page-image"/>
+                </div>
+
+                <div class="col-lg-10"> 
+	                <h3 style="text-align: left;">Random Forest</h3>
+	                <p style="text-align: left;">
+	                    <li class="lead" style="text-align: left;" >Random forests is a supervised Machine Learning Algorithm that is used widely in Classification and Regression problems. It builds decision trees on different samples and takes their majority vote for classification and average in case of regression. It is very easy to build and train. When we walk through the categorical variables, the tree based model could learn each split, which is similiar with the answers in questionnaire.</li>
+	                    <li class="lead" style="text-align: left;" >The training process is pretty same as the logistic regression models, we performed 5-fold cross validation to find the best setting for two hyperparameters - the maximum depth and the number of trees/estimators.</li>
+	                    <li class="lead" style="text-align: left;" >The result of the model is really good as we expected. The overall accuracy for each class is about 93%, the precisions for all class are above 90% and the f1 score for all class are also above 90%. 
+	                    For the important features, the random forest gives slightly different top 3 features: financial conditions, class duration and age are detected as important features by random forests model.</li>
+	                </p>
+	                <div class="row">
+	                    <div class="col-lg-6">
+	                        <iframe width="900" height="850" src="{{url_for('static', filename='cm_rf.html')}}"></iframe>
+                           <img src={{url_for('static', filename='images/rf_imps.png')}} class="page-image"/>
+	                    </div>
+	                </div>
+                </div>
+
+
+                 <div class="col-lg-10">
+	                <h3 style="text-align: left;">XGBoost</h3>
+	                <p style="text-align: left;">
+	                    <li class="lead" style="text-align: left;" > Extreme Gradient Boosting is a type of gradient based boosting that is known to have good performance
+	                        and speed. It belongs to a family of boosting algorithms and uses the gradient boosting (GBM) framework at its core. It is an optimized distributed gradient boosting library. XGBoost implements several optimization and
+	                        regularization techniques and handles sparse data very well.
+	                        This model is also expected to fit the data well. </li>
+	                    <li class="lead" style="text-align: left;" >Three hyperparameters are tuned: the number of trees, maximum depth and learning rate. We tune them by grid search using 5-fold cross validation. </li>
+	                    <li class="lead" style="text-align: left;" >XGBoost models performs quite steady and has close result as random forest. The overall average of accuracy is 93%, the precisions for all class are above 90% and the f1 score for all class are also above 90%. The little difference performance between the Xgboost and the random forest is Xgboost perform better in class 3, whearas random forest tends to perform better in class 2.</li>
+	                    <li class="lead" style="text-align: left;" >The top 3 important features captured by this model are class duration, financial conditions and the self-limitation.</li>
+	                </p>
+	                <div class="row">
+	                    <div class="col-lg-6">
+	                        <iframe width="900" height="800" src="{{url_for('static', filename='cm_xgb.html')}}"></iframe>
+                          <img src="{{url_for('static', filename='images/xgb_imps.png')}}" class="page-image"/>
+	                    </div>
+	                </div>
+            	</div>
+
+
+	                <div class="col-lg-10">
+		                <h3 style="text-align: left;">Support Vector Classifier</h3>
+	               		 <p style="text-align: left;">
+	                    <li class="lead" style="text-align: left;">Support vector classifier is to find a hyperplane in an N-dimensional space(N — the number of features) that distinctly classifies the data points. For nonlinear case, SVC could map the data into higher dimension using different kernel function. In our case, we convert our categories into numeric and it will be easy to fit the SVC.</li>
+	                    <li class="lead" style="text-align: left;">We tuned the C(penalty term),
+	                        gamma, degree and kernel types using a grid search and 5-fold cross validation.
+	                        Initially, the model does not perform well, but after tuning the reasonable parameters, the accuracy increases by 0.3.</li>
+	                    <li class="lead" style="text-align: left;">The result of our tuned model has 87% accuracy on average, with above 85% precision score for all classes. However, in recall, it suggest the model performs bad in predicting class 3 and extremely well in predicting class 1.
+	                    Becasue the nonlinear kernel does not give the feature importance, we extract the feature importance from linear kernel and show the institution type, financial condition and class duration are top 3 features. </li>              
+	                </p>
+	                <div class="row">
+	                    <div class="col-lg-6">
+	                        <div class="timeline-image">
+	                          <iframe width="900" height="800" title="SVC Confusion Matrix" src="{{url_for('static', filename='cm_svc.html')}}"></iframe>                   
+                            <img src="{{url_for('static', filename='images/svc_imps.png')}}" class="page-image"/>
+	                        </div>
+	                    </div>
+	                </div>
+            </div>
+
+
+                <div class="col-lg-10">
+		                <h3 style="text-align: left;">Model Comparison</h3>
+	                	
+		                    <p class="lead" style="text-align: left;">
+		                        In this section we will focus on comparing models based on confusion matrix. Becasue confusion matrix is a really good evaluation metric in classification.
+		                    </p>
+	                	
+	                <p class="lead" style="text-align: left;">
+	                    We have plotted the percentges of corrected predicted in each class for each model. There are four heatmaps corresponding to four models' performance.
+	                </p>
+	                <iframe width="900" height="900"  src="{{url_for('static', filename='precent_lr.html')}}"></iframe>
+	                <iframe width="900" height="900" src="{{url_for('static', filename='precent_svc.html')}}"></iframe>
+	                <iframe width="900" height="900" src="{{url_for('static', filename='precent_rf.html')}}"></iframe>
+	                <iframe width="900" height="900" src="{{url_for('static', filename='precent_xgb.html')}}"></iframe>
+	                
+
+	                <p class="lead" style="text-align: left;">
+	                    Since the data is highly imbalanced, it is important to care more about the accuracy with in each class rather than the overall accuracy. Thus, we could say the random forest and the xgboost models are the optimal ones in this classification problem, given the fact that they all have 90% accurate prediction in each class.
+	                </p>
+	        	</div>
+	        </div>
+	    </div>
+     </section>
+
+        <!-- Conclusion-->
+        <section class="callout" id="conclusion">
+            <div class="container px-4 px-lg-5 text-center">
+            	<div class="content-section-heading">
+	                <h2 class="mx-auto mb-5">
+	                    Conclusions
+	                </h2>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <li class="lead" style="text-align: left;">We trained 4 different models to make predictions for student adaptivity level. The model selections are based on the data structures and the types of features. 
+                    </li>
+                    <li class="lead" style="text-align: left;">We see that Random forests and the Xgboost are the best performing model and all
+                        models achieve the 80% accuracy score in classifying the target variable. Also, we could notice that finanical condition and  class duration are very importance features no matter which model we pick. It is interesting
+                        to see that gender and internet type are actually not that significant in attending online education. In other words, as long as the class setting is reasonable and family supports finanical cost, everyone is expected to digest course work well.
+                    </li>
+                    <li class="lead" style="text-align: left;">
+                    	To further imporve the project, we could modify our model to serve as a self-assessment in online learning. Asking user to input their learning background such as age, gender, class duration and internet types etc., then our system will output a general studying quality based his/her background. If we want to be more precise, we will collect more data such as colleges provided online education in geographically, the class structures, and the popularity of the teacher among students. For the model selection, we will stick on some tree-based and boosting methods, becasue they perform really well in categrical data structures. 
+                    </li>   
+                 </div>           
+            </div>
+        </section>
+        <!-- Team member -->
+        <section class="content-section bg-primary text-white" id="contact">
+            <div class="container">
+                <div class="container px-4 px-lg-5 text-center">
+                    <h3 class="section-subheading mb-4">Contact Me</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto text-center">
+                        <div class="team-member" >
+<!--                             <img class="mx-auto rounded-circle" src="../static/images/me.jpg" alt="..." /> -->
+                            
+                            <h4>Katie Jiang</h4>
+                            <p class="mb-4">Project Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://github.com/Katie-Jiang" aria-label="Github Profile"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/katie-jiang-05019421b/" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                </div> -->
+            </div>
+         </section>
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/scripts.js"></script>
+    </body>
+</html>
