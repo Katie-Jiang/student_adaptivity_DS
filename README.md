@@ -9,7 +9,7 @@
 ### Contents
 
 - Homepage:
-![The homepage of the website](/app/static/images/homepage.png)
+![The homepage of the website](https://user-images.githubusercontent.com/104539969/166126502-c41b51bb-6bf6-47ca-ada9-96ec5fd98d44.png)
 
 - About
 
